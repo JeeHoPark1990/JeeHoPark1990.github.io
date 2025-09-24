@@ -1,0 +1,229 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍길동 - 네트워크 장비 개발자 포트폴리오</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid white;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .skill-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .experience-item, .project-item {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="홍길동 프로필 사진" class="profile-img">
+        <h1>홍길동</h1>
+        <p>시니어 네트워크 장비 개발자 | 1990년생 | 13년 이상 경력</p>
+        <p>최첨단 네트워크 하드웨어 및 소프트웨어 솔루션 설계와 개발 전문가</p>
+    </header>
+
+    <section id="about">
+        <h2>소개</h2>
+        <p>1990년생으로, 컴퓨터공학 학사 학위를 취득한 후 2012년부터 네트워크 장비 개발자로 13년 이상의 경력을 쌓아왔습니다. 주니어 개발자에서 리드 아키텍트로 성장하며 SDN, 5G 인프라, 보안 네트워크 프로토콜 설계에 전문성을 키웠습니다. 전 세계적으로 배포된 확장 가능한 고성능 네트워크 솔루션 개발에 기여했으며, 혁신과 기술 발전에 열정을 가지고 있습니다.</p>
+    </section>
+
+    <section id="skills">
+        <h2>기술 스킬</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <h3>네트워크 기초</h3>
+                <ul>
+                    <li>TCP/IP, OSI 7계층</li>
+                    <li>라우팅 프로토콜 (OSPF, BGP)</li>
+                    <li>IPv4/IPv6, VLAN, NAT</li>
+                </ul>
+            </div>
+            <div class="skill-item">
+                <h3>하드웨어 지식</h3>
+                <ul>
+                    <li>임베디드 시스템 (ARM, FPGA)</li>
+                    <li>네트워크 장비 (스위치, 라우터)</li>
+                    <li>하드웨어-소프트웨어 통합</li>
+                </ul>
+            </div>
+            <div class="skill-item">
+                <h3>프로그래밍</h3>
+                <ul>
+                    <li>C/C++ (임베디드 개발)</li>
+                    <li>Python (자동화 스크립팅)</li>
+                    <li>Java/Go (네트워크 애플리케이션)</li>
+                </ul>
+            </div>
+            <div class="skill-item">
+                <h3>보안 및 최적화</h3>
+                <ul>
+                    <li>방화벽, VPN, SSL/TLS</li>
+                    <li>QoS, 트래픽 분석</li>
+                    <li>Zero Trust 보안</li>
+                </ul>
+            </div>
+            <div class="skill-item">
+                <h3>클라우드 및 신기술</h3>
+                <ul>
+                    <li>AWS/Azure 네트워킹</li>
+                    <li>SDN/NFV</li>
+                    <li>5G/6G, AI 네트워킹</li>
+                </ul>
+            </div>
+            <div class="skill-item">
+                <h3>도구 및 테스트</h3>
+                <ul>
+                    <li>Wireshark, GNS3</li>
+                    <li>CI/CD (Jenkins)</li>
+                    <li>인증: CCNP, AWS Certified</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>경력</h2>
+        <div class="experience-item">
+            <h3>리드 네트워크 개발자 - 테크이노베이션 (2020 - 현재)</h3>
+            <p>10명으로 구성된 팀을 이끌며 5G 네트워크용 SDN 기반 라우터 개발. AI 기반 트래픽 관리로 성능 30% 향상. 하드웨어 및 소프트웨어 통합 프로젝트 관리.</p>
+        </div>
+        <div class="experience-item">
+            <h3>시니어 네트워크 엔지니어 - 글로벌텔레콤 (2015 - 2020)</h3>
+            <p>엔터프라이즈 스위치용 보안 네트워크 프로토콜 설계 및 구현. FPGA 기반 하드웨어 가속으로 지연 시간 40% 감소. 고트래픽 환경 트러블슈팅 담당.</p>
+        </div>
+        <div class="experience-item">
+            <h3>주니어 네트워크 개발자 - 스타트업네트웍스 (2012 - 2015)</h3>
+            <p>엔트리 레벨 라우터용 임베디드 소프트웨어 개발. TCP/IP 스택 구현 경험과 CCNA 인증 취득.</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>주요 프로젝트</h2>
+        <div class="project-item">
+            <h3>클라우드 네트워크용 SDN 컨트롤러</h3>
+            <p>OpenFlow를 활용한 Python 기반 SDN 컨트롤러 개발. AWS에 배포하여 100개 이상 노드의 네트워크 효율성 개선.</p>
+            <a href="https://github.com/honggildong/sdn-controller" target="_blank">GitHub에서 보기</a>
+        </div>
+        <div class="project-item">
+            <h3>5G 라우터 펌웨어</h3>
+            <p>VPN 및 QoS 기능을 포함한 5G 호환 라우터용 C++ 펌웨어 개발. Wireshark로 실환경 테스트 완료.</p>
+            <a href="https://github.com/honggildong/5g-firmware" target="_blank">GitHub에서 보기</a>
+        </div>
+        <div class="project-item">
+            <h3>네트워크 보안 분석 도구</h3>
+            <p>머신러닝을 활용한 네트워크 취약점 분석 Go 애플리케이션 개발.</p>
+            <a href="https://github.com/honggildong/security-analyzer" target="_blank">GitHub에서 보기</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>연락처</h2>
+        <p>이메일: hong.gildong@example.com</p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/honggildong" target="_blank">linkedin.com/in/honggildong</a></p>
+        <p>GitHub: <a href="https://github.com/honggildong" target="_blank">github.com/honggildong</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 홍길동. All rights reserved.</p>
+    </footer>
+</body>
+</html>
