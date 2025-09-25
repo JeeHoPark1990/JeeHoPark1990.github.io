@@ -111,19 +111,68 @@
         a:hover {
             text-decoration: underline;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="홍길동 프로필 사진" class="profile-img">
         <h1>홍길동</h1>
-        <p>시니어 네트워크 장비 개발자 | 1990년생 | 13년 이상 경력</p>
-        <p>최첨단 네트워크 하드웨어 및 소프트웨어 솔루션 설계와 개발 전문가</p>
+        <p>시니어 네트워크 장비 개발자 | 1990년생 | 13년 경력</p>
+        <p>네트워크 인프라 솔루션 개발 전문가로, SDN 및 5G 기술에 초점을 맞춰 혁신적인 프로젝트를 주도합니다.</p>
     </header>
 
     <section id="about">
         <h2>소개</h2>
-        <p>1990년생으로, 컴퓨터공학 학사 학위를 취득한 후 2012년부터 네트워크 장비 개발자로 13년 이상의 경력을 쌓아왔습니다. 주니어 개발자에서 리드 아키텍트로 성장하며 SDN, 5G 인프라, 보안 네트워크 프로토콜 설계에 전문성을 키웠습니다. 전 세계적으로 배포된 확장 가능한 고성능 네트워크 솔루션 개발에 기여했으며, 혁신과 기술 발전에 열정을 가지고 있습니다.</p>
+        <p>1990년생으로, 서울대학교 컴퓨터공학과를 2012년에 졸업했습니다. 졸업 후 네트워크 장비 개발 분야에서 경력을 시작해 13년 동안 다양한 프로젝트를 통해 기술력을 쌓아왔습니다. 하드웨어와 소프트웨어를 통합한 솔루션 개발에 강점을 가지며, 팀 협업과 문제 해결 능력을 바탕으로 글로벌 프로젝트에 참여했습니다. 현재는 SDN과 AI 기반 네트워킹 기술에 관심을 두고 있습니다.</p>
+    </section>
+
+    <section id="education">
+        <h2>학력 및 인증</h2>
+        <table>
+            <tr>
+                <th>항목</th>
+                <th>상세</th>
+                <th>연도</th>
+            </tr>
+            <tr>
+                <td>학위</td>
+                <td>서울대학교 컴퓨터공학 학사</td>
+                <td>2008 - 2012</td>
+            </tr>
+            <tr>
+                <td>인증</td>
+                <td>Cisco Certified Network Associate (CCNA)</td>
+                <td>2013</td>
+            </tr>
+            <tr>
+                <td>인증</td>
+                <td>Cisco Certified Network Professional (CCNP)</td>
+                <td>2016</td>
+            </tr>
+            <tr>
+                <td>인증</td>
+                <td>AWS Certified Advanced Networking Specialty</td>
+                <td>2020</td>
+            </tr>
+            <tr>
+                <td>인증</td>
+                <td>CompTIA Security+</td>
+                <td>2022</td>
+            </tr>
+        </table>
     </section>
 
     <section id="skills">
@@ -132,49 +181,57 @@
             <div class="skill-item">
                 <h3>네트워크 기초</h3>
                 <ul>
-                    <li>TCP/IP, OSI 7계층</li>
-                    <li>라우팅 프로토콜 (OSPF, BGP)</li>
-                    <li>IPv4/IPv6, VLAN, NAT</li>
+                    <li>TCP/IP 스택 구현 및 최적화</li>
+                    <li>OSPF, BGP, RIP 라우팅 프로토콜</li>
+                    <li>IPv4/IPv6 마이그레이션</li>
+                    <li>VLAN, NAT, STP 구성</li>
                 </ul>
             </div>
             <div class="skill-item">
                 <h3>하드웨어 지식</h3>
                 <ul>
-                    <li>임베디드 시스템 (ARM, FPGA)</li>
-                    <li>네트워크 장비 (스위치, 라우터)</li>
-                    <li>하드웨어-소프트웨어 통합</li>
+                    <li>임베디드 시스템 개발 (ARM 프로세서)</li>
+                    <li>FPGA 프로그래밍 (Xilinx Vivado)</li>
+                    <li>네트워크 인터페이스 카드 (NIC) 드라이버 개발</li>
+                    <li>스위치/라우터 하드웨어 통합</li>
                 </ul>
             </div>
             <div class="skill-item">
                 <h3>프로그래밍</h3>
                 <ul>
-                    <li>C/C++ (임베디드 개발)</li>
-                    <li>Python (자동화 스크립팅)</li>
-                    <li>Java/Go (네트워크 애플리케이션)</li>
+                    <li>C/C++ (펌웨어 개발)</li>
+                    <li>Python (네트워크 자동화 스크립트)</li>
+                    <li>Java/Go (백엔드 서비스 개발)</li>
+                    <li>Bash 쉘 스크립팅</li>
                 </ul>
             </div>
             <div class="skill-item">
                 <h3>보안 및 최적화</h3>
                 <ul>
-                    <li>방화벽, VPN, SSL/TLS</li>
-                    <li>QoS, 트래픽 분석</li>
-                    <li>Zero Trust 보안</li>
+                    <li>방화벽 (IPTables, PFsense) 설정</li>
+                    <li>VPN (IPSec, OpenVPN) 구현</li>
+                    <li>SSL/TLS 인증서 관리</li>
+                    <li>QoS 및 트래픽 셰이핑</li>
+                    <li>Zero Trust 아키텍처 설계</li>
                 </ul>
             </div>
             <div class="skill-item">
                 <h3>클라우드 및 신기술</h3>
                 <ul>
-                    <li>AWS/Azure 네트워킹</li>
-                    <li>SDN/NFV</li>
-                    <li>5G/6G, AI 네트워킹</li>
+                    <li>AWS VPC, Azure Virtual Network</li>
+                    <li>SDN 컨트롤러 (OpenDaylight, ONOS)</li>
+                    <li>NFV 가상화</li>
+                    <li>5G 코어 네트워크 개발</li>
+                    <li>AI/ML 기반 네트워크 예측</li>
                 </ul>
             </div>
             <div class="skill-item">
                 <h3>도구 및 테스트</h3>
                 <ul>
-                    <li>Wireshark, GNS3</li>
-                    <li>CI/CD (Jenkins)</li>
-                    <li>인증: CCNP, AWS Certified</li>
+                    <li>Wireshark 패킷 분석</li>
+                    <li>GNS3, Cisco Packet Tracer 시뮬레이션</li>
+                    <li>CI/CD 파이프라인 (Jenkins, GitLab CI)</li>
+                    <li>Ansible 네트워크 자동화</li>
                 </ul>
             </div>
         </div>
@@ -183,35 +240,41 @@
     <section id="experience">
         <h2>경력</h2>
         <div class="experience-item">
-            <h3>리드 네트워크 개발자 - 테크이노베이션 (2020 - 현재)</h3>
-            <p>10명으로 구성된 팀을 이끌며 5G 네트워크용 SDN 기반 라우터 개발. AI 기반 트래픽 관리로 성능 30% 향상. 하드웨어 및 소프트웨어 통합 프로젝트 관리.</p>
+            <h3>시니어 네트워크 개발자 - 한국텔레콤 (2021 - 현재)</h3>
+            <p>5G 네트워크 인프라 개발 팀에서 SDN 기반 라우터 개발 주도. Python과 C++를 사용해 트래픽 관리 모듈 구현, 네트워크 지연 25% 감소. 팀원 8명 관리하며, AWS 통합 프로젝트 완료.</p>
         </div>
         <div class="experience-item">
-            <h3>시니어 네트워크 엔지니어 - 글로벌텔레콤 (2015 - 2020)</h3>
-            <p>엔터프라이즈 스위치용 보안 네트워크 프로토콜 설계 및 구현. FPGA 기반 하드웨어 가속으로 지연 시간 40% 감소. 고트래픽 환경 트러블슈팅 담당.</p>
+            <h3>네트워크 엔지니어 - 삼성SDS (2016 - 2021)</h3>
+            <p>엔터프라이즈 스위치 및 방화벽 개발. FPGA를 활용한 하드웨어 가속 기능 추가로 처리 속도 35% 향상. 보안 취약점 분석 및 패치 개발, 고트래픽 환경 테스트 담당.</p>
         </div>
         <div class="experience-item">
-            <h3>주니어 네트워크 개발자 - 스타트업네트웍스 (2012 - 2015)</h3>
-            <p>엔트리 레벨 라우터용 임베디드 소프트웨어 개발. TCP/IP 스택 구현 경험과 CCNA 인증 취득.</p>
+            <h3>주니어 네트워크 개발자 - LG CNS (2012 - 2016)</h3>
+            <p>기본 라우터 펌웨어 개발부터 시작. TCP/IP 스택 최적화와 VLAN 구성 경험 쌓음. CCNA/CCNP 인증 취득하며 실무 적용.</p>
         </div>
     </section>
 
     <section id="projects">
         <h2>주요 프로젝트</h2>
         <div class="project-item">
-            <h3>클라우드 네트워크용 SDN 컨트롤러</h3>
-            <p>OpenFlow를 활용한 Python 기반 SDN 컨트롤러 개발. AWS에 배포하여 100개 이상 노드의 네트워크 효율성 개선.</p>
-            <a href="https://github.com/honggildong/sdn-controller" target="_blank">GitHub에서 보기</a>
+            <h3>SDN 기반 클라우드 네트워크 컨트롤러</h3>
+            <p><strong>기술 스택:</strong> Python (Flask), OpenFlow, AWS EC2<br>
+            <strong>역할:</strong> 전체 아키텍처 설계 및 구현<br>
+            <strong>결과:</strong> 200개 노드 환경에서 네트워크 효율 40% 향상. 도전: 실시간 데이터 처리 – 해결: WebSocket 통합.<br>
+            <a href="https://github.com/honggildong/sdn-controller" target="_blank">GitHub에서 보기</a></p>
         </div>
         <div class="project-item">
-            <h3>5G 라우터 펌웨어</h3>
-            <p>VPN 및 QoS 기능을 포함한 5G 호환 라우터용 C++ 펌웨어 개발. Wireshark로 실환경 테스트 완료.</p>
-            <a href="https://github.com/honggildong/5g-firmware" target="_blank">GitHub에서 보기</a>
+            <h3>5G 라우터 펌웨어 개발</h3>
+            <p><strong>기술 스택:</strong> C++, ARM 임베디드, Wireshark<br>
+            <strong>역할:</strong> 펌웨어 코딩 및 테스트<br>
+            <strong>결과:</strong> QoS 기능으로 대역폭 관리 최적화. 도전: 보안 취약점 – 해결: SSL/TLS 암호화 적용.<br>
+            <a href="https://github.com/honggildong/5g-firmware" target="_blank">GitHub에서 보기</a></p>
         </div>
         <div class="project-item">
-            <h3>네트워크 보안 분석 도구</h3>
-            <p>머신러닝을 활용한 네트워크 취약점 분석 Go 애플리케이션 개발.</p>
-            <a href="https://github.com/honggildong/security-analyzer" target="_blank">GitHub에서 보기</a>
+            <h3>네트워크 보안 모니터링 도구</h3>
+            <p><strong>기술 스택:</strong> Go, Prometheus, Grafana<br>
+            <strong>역할:</strong> 백엔드 개발 및 대시보드 UI 설계<br>
+            <strong>결과:</strong> 실시간 위협 탐지로 보안 이벤트 50% 감소. 도전: 대량 데이터 처리 – 해결: ML 알고리즘 도입.<br>
+            <a href="https://github.com/honggildong/security-monitor" target="_blank">GitHub에서 보기</a></p>
         </div>
     </section>
 
